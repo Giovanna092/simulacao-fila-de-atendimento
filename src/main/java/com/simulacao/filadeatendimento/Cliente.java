@@ -7,14 +7,13 @@ package com.simulacao.filadeatendimento;
 
 public class Cliente<T> {
     private T nomeCliente;
-    private T senhaAtendimento;
+    private T senha;
     private Cliente<T> proximoCliente;
 
     public Cliente() {  }
 
-    public Cliente(T nomeCliente, T senhaAtendimento) {
+    public Cliente(T nomeCliente) {
         this.nomeCliente = nomeCliente;
-        this.senhaAtendimento = senhaAtendimento;
     }
 
     public T getNomeCliente() {
@@ -25,12 +24,12 @@ public class Cliente<T> {
         this.nomeCliente = nomeCliente;
     }
 
-    public T getSenhaAtendimento() {
-        return senhaAtendimento;
+    public T getSenha() {
+        return senha;
     }
 
-    public void setSenhaAtendimento(T senhaAtendimento) {
-        this.senhaAtendimento = senhaAtendimento;
+    public void setSenha(T senha) {
+        this.senha = senha;
     }
 
     public Cliente<T> getProximoCliente() {
@@ -45,7 +44,7 @@ public class Cliente<T> {
     public String toString() {
         return "Cliente{" +
                 "nome do cliente=" + nomeCliente +
-                ", senha para atendimento=" + senhaAtendimento +
+                ", senha para atendimento=" + senha +
                 '}';
     }
 }
