@@ -29,7 +29,7 @@ public class Fila<T> {
 
 
     //remove o primeiro Cliente da fila
-    public T dequeue() {
+    public void dequeue() {
         if (!this.isEmpty()) {
             Cliente primeiroCliente = ultimoClienteFila;
             Cliente clienteAux = ultimoClienteFila;
@@ -44,14 +44,13 @@ public class Fila<T> {
                     break;
                 }
             }
-            return (T) primeiroCliente.getNomeCliente();
+            System.out.println(primeiroCliente);;
         }
-        return null;
     }
 
 
     //mostra o primeiro cliente na fila ou proximo a ser atendido
-    public T first() {
+    public void first() {
         if (!isEmpty()) {
             Cliente primeiroCliente = ultimoClienteFila;
             while (true) {
@@ -62,9 +61,8 @@ public class Fila<T> {
                     break;
                 }
             }
-            return (T)primeiroCliente.toString();
+            System.out.println(primeiroCliente);
         }
-        return null;
     }
 
 
@@ -74,20 +72,20 @@ public class Fila<T> {
     @Override
     public String toString() {
         if (this.isEmpty()) {
-            return "Fila{}";
+            return "Fila{ }";
         }
         String str = "";
-        Cliente clAuxiliar = ultimoClienteFila;
+        Cliente clienteAux = ultimoClienteFila;
 
         if (ultimoClienteFila != null) {
             //estrutura para percorrer toda a lista e imprimir seus dados começando pelo ultimo e indo até o primeiro
             while (true) {
                 str += "Cliente{" +
-                        "nome do cliente: " + clAuxiliar.getNomeCliente() +
-                        ", senha para atendiment: " + clAuxiliar.getSenha() +
+                        "nome do cliente: " + clienteAux.getNomeCliente() +
+                        ", senha para atendiment: " + clienteAux.getSenha() +
                         "}---> ";
-                if (clAuxiliar.getProximoCliente() != null) {
-                    clAuxiliar = clAuxiliar.getProximoCliente();
+                if (clienteAux.getProximoCliente() != null) {
+                    clienteAux = clienteAux.getProximoCliente();
                 } else {
                     str += "null";
                     break;

@@ -15,9 +15,11 @@ public class MainTeste {
         minhaFila.enqueue("Ednilson");
 
         System.out.println(minhaFila);
+
+        System.out.println("\nProximo a ser atendido:");
         minhaFila.first();
 
-        System.out.println("\nProximo a ser atendido: ");
+        System.out.println("\nCliente atendido: ");
         minhaFila.dequeue();
         //System.out.println(minhaFila);
 
