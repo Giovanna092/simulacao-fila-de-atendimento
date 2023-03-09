@@ -17,6 +17,7 @@ public class Fila<T> {
         return senhaAtendimento;
     }
 
+
     //adiciona novo cliente ao final da fila
     public void enqueue(T nome) {
         Cliente novoCliente = new Cliente(nome);
@@ -26,8 +27,31 @@ public class Fila<T> {
         novoCliente.setSenha(senhaAtendimento);
     }
 
+
+    //remove o primeiro Cliente da fila
+    public T dequeue() {
+        if (!this.isEmpty()) {
+            Cliente primeiroCliente = ultimoClienteFila;
+            Cliente clienteAux = ultimoClienteFila;
+
+            //percorre do ultimo cliente até o primeiro que será removido
+            while (true) {
+                if (primeiroCliente.getProximoCliente() != null) {
+                    clienteAux = primeiroCliente;
+                    primeiroCliente = primeiroCliente.getProximoCliente();
+                } else {
+                    clienteAux.setProximoCliente(null);
+                    break;
+                }
+            }
+            return (T) primeiroCliente.getNomeCliente();
+        }
+        return null;
+    }
+
+
     //mostra o primeiro cliente na fila ou proximo a ser atendido
-    /*public T first() {
+    public T first() {
         if (!isEmpty()) {
             Cliente primeiroCliente = ultimoClienteFila;
             while (true) {
@@ -35,15 +59,17 @@ public class Fila<T> {
                     //percorre do ultimo na fila até o primeiro
                     primeiroCliente = primeiroCliente.getProximoCliente();
                 } else {
-                    return null;
+                    break;
                 }
             }
-            return (T) primeiroCliente;
+            return (T)primeiroCliente.toString();
         }
         return null;
-    }*/
+    }
+
 
     public boolean isEmpty() { return ultimoClienteFila == null ? true : false; }
+
 
     @Override
     public String toString() {
@@ -57,9 +83,9 @@ public class Fila<T> {
             //estrutura para percorrer toda a lista e imprimir seus dados começando pelo ultimo e indo até o primeiro
             while (true) {
                 str += "Cliente{" +
-                        "nome do cliente=" + clAuxiliar.getNomeCliente() +
-                        ", senha para atendimento=" + clAuxiliar.getSenha() +
-                        "}--->";
+                        "nome do cliente: " + clAuxiliar.getNomeCliente() +
+                        ", senha para atendiment: " + clAuxiliar.getSenha() +
+                        "}---> ";
                 if (clAuxiliar.getProximoCliente() != null) {
                     clAuxiliar = clAuxiliar.getProximoCliente();
                 } else {

@@ -43,8 +43,8 @@ public class Cliente<T> {
     @Override
     public String toString() {
         return "Cliente{" +
-                "nome do cliente=" + nomeCliente +
-                ", senha para atendimento=" + senha +
+                "nome do cliente: " + nomeCliente +
+                ", senha para atendimento: " + senha +
                 '}';
     }
 }
