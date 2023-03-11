@@ -11,7 +11,10 @@ public class Fila<T> {
     private int senhaAtendimento;
 
 
-    public Fila() { }
+    public Fila() {
+        ultimoClienteFila=null;
+        senhaAtendimento=0;
+    }
 
     public int getSenhaAtendimento() {
         return senhaAtendimento;
@@ -29,7 +32,7 @@ public class Fila<T> {
 
 
     //remove o primeiro Cliente da fila
-    public void dequeue() {
+    public T dequeue() {
         if (!this.isEmpty()) {
             Cliente primeiroCliente = ultimoClienteFila;
             Cliente clienteAux = ultimoClienteFila;
@@ -40,12 +43,18 @@ public class Fila<T> {
                     clienteAux = primeiroCliente;
                     primeiroCliente = primeiroCliente.getProximoCliente();
                 } else {
+                    //se este if so é verdadeiro caso a fila tenha apenas um Cliente
+                    if (clienteAux.getProximoCliente() == null && primeiroCliente.getProximoCliente() == null) {
+                        ultimoClienteFila = null;
+                    }
+
+                    //ClienteAux se torna o primeiro Cliente
                     clienteAux.setProximoCliente(null);
                     break;
                 }
             }
-            System.out.println(primeiroCliente);;
         }
+        return null;
     }
 
 

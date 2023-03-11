@@ -13,6 +13,7 @@ public class Cliente<T> {
     public Cliente() {  }
 
     public Cliente(T nomeCliente) {
+        this.proximoCliente = null;
         this.nomeCliente = nomeCliente;
     }
 
