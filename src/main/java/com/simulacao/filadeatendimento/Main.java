@@ -44,9 +44,20 @@ public class Main {
                     System.out.println("Proximo cliente da fila:");
                     if (!fila.isEmpty()) {
                         fila.first();
+                    } else {
+                        System.out.println(fila);
+                        System.out.println("\nA fila está vazia no momento. Deseja adicionar novo cliente à fila? (sim / nao)");
+                        addNovo = entradaTxtSimples.next();
+                        System.out.println("");
+
+                        if (addNovo.equalsIgnoreCase("sim") || addNovo.equalsIgnoreCase("s")) {
+                            System.out.println("Digite o nome do cliente que sera adicionado:");
+                            nome = entradaTxt.nextLine();
+                            fila.enqueue(nome);
+                            System.out.println("");
+                        }
                     }
-                    System.out.println("Fila vazia...");
-                    System.out.println("");
+
                     break;
                 case 3:
                     System.out.println("Digite o nome do cliente que sera adicionado:");
